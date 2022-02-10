@@ -1,0 +1,61 @@
+
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+
+    <title>세모자 : 세상의 모든 자격증!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo:wght@800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+<div class="header">
+    <div  class="smLogo">
+        <!-- 로고 내에 home controller -->
+        <a href="/"> <img src="images/logo.png" class="logoImg"> </a>
+    </div>
+
+    <form th:action="@{/search}" method="post">
+        <div class="upperSearchBar">
+            <div class="upperSearchInner">
+                <input class="upperSearch" name="searchname" type="text">
+            </div>
+            <button class="upperSearchIcon" type="submit"></button>
+        </div>
+    </form>
+
+    <div class="logDiv">
+        <ul class="logUl">
+            <!-- a 내에 login/logout controller -->
+            <li class="logLi"><a href="">LOGOUT</a></li>
+            <!-- a 내에 login/logout controller -->
+            <li class="logLi"><a th:href="'/mypage?userid=' + ${userid}">MY PAGE</a></li>
+        </ul>
+    </div>
+</div>
+<div class="menuDiv">
+    <ul class="menuUl">
+        <li class="menuLi" th:each="c : ${allCategories}">
+            <a th:href="'/category/' + ${c.getCategoryName()} + '/0'" th:text="${c.getCategoryName()}"></a>
+        </li>
+    </ul>
+</div>
+<hr>
+<div class="nav">
+    <div class="recText">
+        <h2>당신의 <span class="chText">"종합"</span> 추천 자격증입니다.</h2>
+    </div>
+    <div class="recText">
+        <h2 th:if="${userRecCerts.size() == 0}">추천 자격증이 없습니다.</h2>
+    </div>
+    <div class="userRecBox">
+        <div class="userRecBox1" th:each="userRecCert : ${userRecCerts}">
+            <span class="userRecName" th:text="${userRecCert.getName()}"></span>
+            <div class="detailA"><a th:href="@{'/category?certid='+${userRecCert.getId()}+'&userid=1'}">상세보기</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

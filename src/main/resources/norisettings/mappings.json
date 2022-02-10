@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "name": {
+      "type": "text",
+      "analyzer": "syn",
+      "fielddata": true
+    },
+    "ministry": {
+      "type": "text"
+    },
+    "agency": {
+      "type": "text"
+    },
+    "cost": {
+      "type": "text"
+    },
+    "tag": {
+      "type": "text",
+      "analyzer": "nori"
+    },
+    "views": {
+      "type": "long"
+    },
+    "modified_time": {
+      "type": "date"
+    },
+    "main": {
+      "type": "text"
+    },
+    "sub": {
+      "type": "text"
+    },
+    "summary": {
+      "type": "text",
+      "analyzer": "info_nori"
+    },
+    "duty": {
+      "type": "text",
+      "analyzer": "info_nori"
+    },
+    "career": {
+      "type": "text",
+      "analyzer": "info_nori"
+    }
+  }
+}
